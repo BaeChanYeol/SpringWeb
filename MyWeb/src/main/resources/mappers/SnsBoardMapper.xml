@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.spring.myweb.snsboard.mapper.ISnsBoardMapper">
+  
+  <!-- 등록하기 -->
+  <insert id="insert">
+  	INSERT INTO snsboard
+  	VALUES (snsboard_seq.NEXTVAL,#{writer},#{uploadPath},#{fileloca},#{filename},#{filerealname},#{content},default)
+  </insert>
+  
+  <select id="getList" resultType="com.spring.myweb.command.SnsBoardVO">
+  	SELECT * FROM snsboard
+  	ORDER BY bno DESC
+  </select>
+  
+  <select id="getDetail" resultType="com.spring.myweb.command.SnsBoardVO">
+  	SELECT * FROM snsboard
+  	WHERE bno = #{bno}
+  </select>
+  
+  <delete id="delete">
+  	DELETE FROM snsboard WHERE bno = #{bno}
+  </delete>
+  
+</mapper>
